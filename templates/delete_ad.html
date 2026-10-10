@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-danger" type="submit">Видалити</button>
+    </form>
+    <a class="btn btn-primary" href="{% url 'ad_list' %}">Назад</a>
+{% endblock %}

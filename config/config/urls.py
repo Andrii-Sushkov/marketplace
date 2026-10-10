@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from ads import views
+from ads.views import AdListView, AdCreateView, AdUpdateView, AdDeleteView
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('accounts/login/', LoginView.as_view(), name="login"),
+    path('', views.AdListView.as_view(), name="ad_list"),
+    path('create/', views.AdCreateView.as_view(), name="create_ad"),
+    path('<int:pk>/update/', views.AdUpdateView.as_view(), name="update_ad"),
+    path('<int:pk>/delete/', views.AdDeleteView.as_view(), name="delete_ad"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
