@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <a class="btn btn-primary" href="{% url 'ad_list' %}">Назад</a>
+
+        <h2>{{ad.title}}</h2>
+        <img src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
+        
+        <p>{{ad.detail}}</p>
+        <p>{{ad.price}}</p>
+        <p>Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
+
+        <a class="btn btn-warning" href="{% url 'update_ad' ad.pk %}">Редагувати</a>
+
+        <a class="btn btn-danger" href="{% url 'delete_ad' ad.pk %}">Видалити</a>
+{% endblock %}

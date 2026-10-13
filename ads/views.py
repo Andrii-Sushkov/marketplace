@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Ad
 from django.urls import reverse_lazy
@@ -37,3 +37,8 @@ class AdDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         ad = self.get_object()
         return ad.author == self.request.user
+
+class AdDetailView(LoginRequiredMixin, DetailView):
+    model = Ad
+    template_name = 'ad_details.html'
+    context_object_name = 'ad'

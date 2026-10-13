@@ -3,16 +3,10 @@
 {% block content %}
     <a class="btn btn-primary" href="{% url 'create_ad' %}">Додати новину</a>
 
-    {% for ad in ads %}
-        <h2>{{ad.title}}</h2>
-        <img src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
-
-        <p>{{ad.detail}}</p>
-        <p>{{ad.price}}</p>
-        <p>Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
-
-        <a class="btn btn-warning" href="{% url 'update_ad' ad.pk %}">Редагувати</a>
-    
-        <a class="btn btn-danger" href="{% url 'delete_ad' ad.pk %}">Видалити</a>
-    {% endfor %}
+    <div class="card" style="width: 18rem;">
+        {% for ad in ads %}
+            <a class="card-title, btn btn-primary" href="{% url 'ad_details' ad.pk %}">{{ad.title}}</a>
+            <img class="card-img-top" src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
+        {% endfor %}
+    </div>
 {% endblock %}

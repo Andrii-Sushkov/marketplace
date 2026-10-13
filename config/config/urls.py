@@ -29,4 +29,5 @@ urlpatterns = [
     path('create/', views.AdCreateView.as_view(), name="create_ad"),
     path('<int:pk>/update/', views.AdUpdateView.as_view(), name="update_ad"),
     path('<int:pk>/delete/', views.AdDeleteView.as_view(), name="delete_ad"),
+    path('<int:pk>/ad/', views.AdDetailView.as_view(), name="ad_details"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
