@@ -8,6 +8,7 @@ class AdListView(LoginRequiredMixin, ListView):
     model = Ad
     template_name = 'ad_list.html'
     context_object_name = 'ads'
+    paginate_by = 3
 
 class AdCreateView(LoginRequiredMixin, CreateView):
     model = Ad

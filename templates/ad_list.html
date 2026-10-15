@@ -7,6 +7,45 @@
         {% for ad in ads %}
             <a class="card-title, btn btn-primary" href="{% url 'ad_details' ad.pk %}">{{ad.title}}</a>
             <img class="card-img-top" src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
+            <p class="card-title">Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
         {% endfor %}
     </div>
+
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-left">
+            
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Попередня</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Попередня</span>
+                </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Наступна</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Наступна</span>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
 {% endblock %}
