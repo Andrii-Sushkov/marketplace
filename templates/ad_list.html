@@ -7,6 +7,7 @@
         {% for ad in ads %}
             <a class="card-title, btn btn-primary" href="{% url 'ad_details' ad.pk %}">{{ad.title}}</a>
             <img class="card-img-top" src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
+            <p>{{ad.price}}</p>
             <p class="card-title">Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
         {% endfor %}
     </div>
