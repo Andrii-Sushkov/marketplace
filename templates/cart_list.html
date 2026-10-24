@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
-{% block content %}
-    {% if cart_items %}
-        {% for item in cart_items %}
-            <h1>Кошик</h1>
+{% if cart_items %}
+    {% for item in cart_items %}
+        <h1>Кошик</h1>
             
-            {{cart.created_at}}
-            {{cart.ad}}
-            {{cart.quantity}}
-        {% endfor %}
-    {% else %}
+        {{cart.created_at}}
+        {{cart.ad}}
+        {{cart.quantity}}
+    {% endfor %}
+{% else %}
+{% endif %}
 
-    <a class="btn btn-danger" href="{% url 'cart_delete' cart.pk %}">Видалити</a>
-{% endblock %}
+<a class="btn btn-danger" href="{% url 'cart_delete' cart.pk %}">Видалити</a>

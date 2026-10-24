@@ -57,15 +57,18 @@ class CartListView(ListView):
     template_name = 'cart_list.html'
     context_object_name = 'cart'
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
 class CartItemCreateView(CreateView):
     model = CartItem
-    fields = ['quantity ']
+    fields = ['quantity']
     template_name = 'cart_add.html'
     success_url = reverse_lazy('cart_list')
+
+    def form_valid(self, form):
+        cart_instance, created = Cart.objects.get_or_create(user=self.request.user)
+        form.instance.cart = cart_instance
+        ad_instance = Ad.objects.first()
+        form.instance.ad = ad_instance
+        return super().form_valid(form)
 
 class CartItemDeleteView(DeleteView):
     model = CartItem

@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from ads import views
-from ads.views import AdListView, AdCreateView, AdUpdateView, AdDeleteView
+from ads.views import AdListView, AdCreateView, AdUpdateView, AdDeleteView, AdDetailView
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
