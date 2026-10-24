@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Ad
+from .models import Ad, Cart, CartItem
 from django.db.models import Q
 from django.urls import reverse_lazy
 
@@ -51,3 +51,23 @@ class AdDetailView(LoginRequiredMixin, DetailView):
     model = Ad
     template_name = 'ad_details.html'
     context_object_name = 'ad'
+
+class CartListView(ListView):
+    model = Cart
+    template_name = 'cart_list.html'
+    context_object_name = 'cart'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class CartItemCreateView(CreateView):
+    model = CartItem
+    fields = ['quantity ']
+    template_name = 'cart_add.html'
+    success_url = reverse_lazy('cart_list')
+
+class CartItemDeleteView(DeleteView):
+    model = CartItem
+    template_name = 'cart_delete.html'
+    success_url = reverse_lazy('ad_list')

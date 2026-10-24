@@ -10,6 +10,11 @@
             <input type="text" name="q" placeholder="Введіть назву оголошення" value="{{ request.GET.q }}">
             <button class="btn btn-dark" type="submit">Шукати</button>
         </form>
+        <form method="post" action="{% url 'cart_list' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark" type="submit">Кошик</button>
+        </form>
 
         <form action="{% url 'logout' %}" method="post" style="display: inline;">
             {% csrf_token %}
