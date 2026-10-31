@@ -24,6 +24,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cart/add/<int:pk>/', views.CartItemCreateView.as_view(), name="cart_add"),
     path('accounts/login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(next_page='/'), name="logout"),
     path('', views.AdListView.as_view(), name="ad_list"),
@@ -32,6 +33,5 @@ urlpatterns = [
     path('<int:pk>/delete/', views.AdDeleteView.as_view(), name="delete_ad"),
     path('<int:pk>/ad/', views.AdDetailView.as_view(), name="ad_details"),
     path('cart/', views.CartListView.as_view(), name="cart_list"),
-    path('cart/create/', views.CartItemCreateView.as_view(), name="cart_add"),
     path('cart/item/<int:pk>/delete/', views.CartItemDeleteView.as_view(), name="cart_delete"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

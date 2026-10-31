@@ -10,7 +10,7 @@
         <p>{{ad.price}}</p>
         <p>Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
 
-        <a class="btn btn-dark" href="{% url 'cart_add' %}">У кошик</a>
+        <a class="btn btn-dark" href="{% url 'cart_add' ad.pk %}">У кошик</a>
 
         <a class="btn btn-warning" href="{% url 'update_ad' ad.pk %}">Редагувати</a>
 

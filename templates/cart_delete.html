@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="post" action="{% url 'cart_list' cart.pk %}">
+    <form method="post" action="{% url 'cart_delete' object.pk %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-danger" type="submit">Видалити</button>

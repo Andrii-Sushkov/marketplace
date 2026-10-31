@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
-{% if cart_items %}
-    {% for item in cart_items %}
+{% block content %}
+    {% for item in cart %}
         <h1>Кошик</h1>
             
         {{cart.created_at}}
-        {{cart.ad}}
-        {{cart.quantity}}
+        {{item.ad}}
+        {{item.quantity}}
+        <a class="btn btn-danger" href="{% url 'cart_delete' item.pk %}">Видалити</a>
+    {% empty %}
+        <p>Кошик порожній</p>
     {% endfor %}
-{% else %}
-{% endif %}
-
-<a class="btn btn-danger" href="{% url 'cart_delete' cart.pk %}">Видалити</a>
+    
+    <a class="btn btn-primary" href="{% url 'ad_list' %}">Назад</a>
+{% endblock %}
