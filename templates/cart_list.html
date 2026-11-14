@@ -7,10 +7,10 @@
         {{cart.created_at}}
         {{item.ad}}
         {{item.quantity}}
-        <a class="btn btn-danger" href="{% url 'cart_delete' item.pk %}">Видалити</a>
+        <a class="btn btn-danger btn-custom" href="{% url 'cart_delete' item.pk %}">Видалити</a>
     {% empty %}
         <p>Кошик порожній</p>
     {% endfor %}
     
-    <a class="btn btn-primary" href="{% url 'ad_list' %}">Назад</a>
+    <a class="btn btn-primary btn-custom" href="{% url 'ad_list' %}">Назад</a>
 {% endblock %}

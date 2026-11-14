@@ -1,0 +1,27 @@
+.btn-custom {
+    border-radius: 50px !important;
+    padding: 8px 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .btn-custom:hover {
+    transform: scale(0.94);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-custom:active {
+    transform: scale(0.89);
+  }
+  
+  img {
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  img:hover {
+    transform: scale(1.02);
+  }
