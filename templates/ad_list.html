@@ -6,10 +6,10 @@
     <div class="d-flex flex-row flex-nowrap overflow-auto pb-3" style="gap: 15px;">
         {% for ad in ads %}
             <div class="card-body" style="min-width: 280px; width: 280px;">
-                <a class="card-title, btn btn-primary btn-custom" href="{% url 'ad_details' ad.pk %}">{{ad.title}}</a>
                 <img class="card-img-top" src="{{ ad.image.url }}" alt="{{ ad.title }}" width="200">
                 <p>{{ad.price}}</p>
                 <p class="card-title">Статус: {% if ad.status %} Куплено {% else %} В продажі {% endif %}</p>
+                <a class="card-title, btn btn-primary btn-custom" href="{% url 'ad_details' ad.pk %}">{{ad.title}}</a>
             </div>
         {% endfor %}
     </div>
